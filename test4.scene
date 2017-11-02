@@ -1,0 +1,69 @@
+CameraLookAt 0 0 0
+CameraLookFrom 5 5 -10
+CameraLookUp 0 1 0
+FieldOfView 30
+DirectionToLight 1 1 -1 LightColor 1 1 1
+AmbientLight .1 .1 .1
+BackgroundColor 0 0 0
+
+Sphere Center 0 0 0 Radius 1 Material Reflective 0 0 1
+
+
+Sphere Center 0 1 0 Radius .5 Material Reflective 1 1 1
+
+Sphere Center 0 1.5 0 Radius .25 Material Reflective 1 1 1
+Sphere Center .5 1 0 Radius .25 Material Reflective 1 1 1
+Sphere Center -.5 1 0 Radius .25 Material Reflective 1 1 1
+Sphere Center 0 1 .5 Radius .25 Material Reflective 1 1 1
+Sphere Center 0 1 -.5 Radius .25 Material Reflective 1 1 1
+
+
+Sphere Center 0 -1 0 Radius .5 Material Reflective 1 1 1
+
+Sphere Center 0 -1.5 0 Radius .25 Material Reflective 1 1 1
+Sphere Center .5 -1 0 Radius .25 Material Reflective 1 1 1
+Sphere Center -.5 -1 0 Radius .25 Material Reflective 1 1 1
+Sphere Center 0 -1 .5 Radius .25 Material Reflective 1 1 1
+Sphere Center 0 -1 -.5 Radius .25 Material Reflective 1 1 1
+
+
+Sphere Center 1 0 0 Radius .5 Material Reflective 1 1 1
+
+Sphere Center 1.5 0 0 Radius .25 Material Reflective 1 1 1
+Sphere Center 1 .5 0 Radius .25 Material Reflective 1 1 1
+Sphere Center 1 -.5 0 Radius .25 Material Reflective 1 1 1
+Sphere Center 1 0 .5 Radius .25 Material Reflective 1 1 1
+Sphere Center 1 0 -.5 Radius .25 Material Reflective 1 1 1
+
+
+Sphere Center -1 0 0 Radius .5 Material Reflective 1 1 1
+
+Sphere Center -1.5 0 0 Radius .25 Material Reflective 1 1 1
+Sphere Center -1 .5 0 Radius .25 Material Reflective 1 1 1
+Sphere Center -1 -.5 0 Radius .25 Material Reflective 1 1 1
+Sphere Center -1 0 .5 Radius .25 Material Reflective 1 1 1
+Sphere Center -1 0 -.5 Radius .25 Material Reflective 1 1 1
+
+
+Sphere Center 0 0 1 Radius .5 Material Reflective 1 1 1
+
+Sphere Center 0 0 1.5 Radius .25 Material Reflective 1 1 1
+Sphere Center .5 0 1 Radius .25 Material Reflective 1 1 1
+Sphere Center -.5 0 1 Radius .25 Material Reflective 1 1 1
+Sphere Center 0 .5 1 Radius .25 Material Reflective 1 1 1
+Sphere Center 0 -.5 1 Radius .25 Material Reflective 1 1 1
+
+
+Sphere Center 0 0 -1 Radius .5 Material Reflective 1 1 1
+
+Sphere Center 0 0 -1.5 Radius .25 Material Reflective 1 1 1
+Sphere Center .5 0 -1 Radius .25 Material Reflective 1 1 1
+Sphere Center -.5 0 -1 Radius .25 Material Reflective 1 1 1
+Sphere Center 0 .5 -1 Radius .25 Material Reflective 1 1 1
+Sphere Center 0 -.5 -1 Radius .25 Material Reflective 1 1 1
+
+Triangle 3 3 3 3 -3 -3 -3 3 3 Material Diffuse 0 .5 0 SpecularHighlight 1 1 1 PhongConstant 4
+Triangle 3 -3 -3 -3 -3 -3 -3 3 3 Material Diffuse .5 0 0 SpecularHighlight 1 1 1 PhongConstant 4
+#Triangle 3 3 3 -3 3 3 -3 3 -3 Material Diffuse .5 .5 0 SpecularHighlight 1 1 1 PhongConstant 4
+#Triangle 3 3 -3 -3 3 -3 3 3 3 Material Diffuse 1 1 1 SpecularHighlight 1 1 1 PhongConstant 4
+#Triangle -3 3 3 -3 3 -3 -3 -3 -3 Material Diffuse 1 0 1 SpecularHighlight 1 1 1 PhongConstant 4

@@ -1,0 +1,21 @@
+CameraLookAt 0 0 0
+CameraLookFrom 0 0 -2
+CameraLookUp 0 1 0
+FieldOfView 30
+DirectionToLight 0 5 -10 LightColor 1 1 1
+AmbientLight .1 .1 .1
+BackgroundColor .2 .2 .2
+Sphere Center .35 0 -.1 Radius .1 Material Reflective 1 1 1
+Sphere Center .2 0 -.1 Radius .1 Material Reflective 1 0 0
+Sphere Center -.6 0 0 Radius .4 Material Reflective 0 1 0
+Sphere Center 0 .3 0 Radius .3 Material Reflective .75 .75 .75
+Sphere Center 1 1 1 Radius .9 Material Reflective 1 .5 .5
+Sphere Center 1 .5 .3 Radius .2 Material Reflective .9 .9 .98
+Sphere Center -.3 -.4 0 Radius .1 Material Reflective 0 0 1
+Sphere Center -.1 -.3 -.3 Radius .1 Material Reflective 1 1 0
+Sphere Center -.5 .5 0 Radius .2 Material Reflective 1 .62 .47
+Sphere Center -.2 -.5 .2 Radius .2 Material Reflective .74 .71 .42
+Sphere Center -.2 .1 -.3 Radius .2 Material Reflective .84 .74 .84
+Sphere Center 0 -.5 .5 Radius .3 Material Reflective 1 0 1
+Sphere Center 1 .5 0 Radius .1 Material Reflective .6 .19 .8
+Sphere Center 0 -.5 -.5 Radius .2 Material Reflective 0 1 1
