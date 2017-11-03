@@ -10,11 +10,11 @@ public class Ray {
         this.direction = direction;
     }
 
-    public Vector3D getOrigin() {
-        return origin;
-    }
-
     public Vector3D getDirection() {
         return direction;
+    }
+    
+    public Vector3D getOrigin() {
+        return origin;
     }
 }

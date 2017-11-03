@@ -40,23 +40,11 @@ public class Sphere extends Shape {
 
     @Override
     public double findIntersection(Ray ray) {
-        double xRayOrigin = ray.getOrigin().getX();
-        double yRayOrigin = ray.getOrigin().getY();
-        double zRayOrigin = ray.getOrigin().getZ();
 
-        double xRayDirection = ray.getDirection().getX();
-        double yRayDirection = ray.getDirection().getY();
-        double zRayDirection = ray.getDirection().getZ();
+        double b = (2 * (ray.getOrigin().getX() - center.getX()) * ray.getDirection().getX()) + (2 * (ray.getOrigin().getY() - center.getY()) * ray.getDirection().getY()) + (2 * (ray.getOrigin().getZ() - center.getZ()) * ray.getDirection().getZ());
+        double c = Math.pow(ray.getOrigin().getX() - center.getX(), 2) + Math.pow(ray.getOrigin().getY() - center.getY(), 2) + Math.pow(ray.getOrigin().getZ() - center.getZ(), 2) - Math.pow(radius, 2);
 
-        double xSphereCenter = center.getX();
-        double ySphereCenter = center.getY();
-        double zSphereCenter = center.getZ();
-
-        double a = 1; // not needed
-        double b = (2 * (xRayOrigin - xSphereCenter) * xRayDirection) + (2 * (yRayOrigin - ySphereCenter) * yRayDirection) + (2 * (zRayOrigin - zSphereCenter) * zRayDirection);
-        double c = Math.pow(xRayOrigin - xSphereCenter, 2) + Math.pow(yRayOrigin - ySphereCenter, 2) + Math.pow(zRayOrigin - zSphereCenter, 2) - Math.pow(radius, 2);
-
-        double discriminant = Math.pow(b, 2) - (4 * a * c);
+        double discriminant = Math.pow(b, 2) - (4 * c);
 
         if(discriminant > 0) {
             double firstRoot = ((-1 * b - Math.sqrt(discriminant)) / 2) - .0000001;

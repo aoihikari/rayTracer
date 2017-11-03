@@ -57,8 +57,8 @@ public class SceneIII extends Scene {
     	
     	shapes.add(sphere2);
     	
-    	sphere3.setColor(new Color(0, 1, 0));
-    	sphere3.setReflective((0 + 1 + 0) / 3);
+    	sphere3.setColor(new Color(1, 1, 1));
+    	sphere3.setReflective((1 + 1 + 1) / 3);
     	
     	shapes.add(sphere3);
     	

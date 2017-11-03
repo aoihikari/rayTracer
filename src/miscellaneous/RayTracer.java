@@ -23,12 +23,12 @@ public class RayTracer {
     private SceneIII sceneIII = new SceneIII();
 
     public void run() {     
-        trace(sceneI);
-        trace(sceneII);
-        trace(sceneIII);
+        rayTrace(sceneI);
+        rayTrace(sceneII);
+        rayTrace(sceneIII);
     }
     
-    public void trace(Scene scene) {
+    public void rayTrace(Scene scene) {
         double aspectRatio = width / height;
         
         double red = 0;
