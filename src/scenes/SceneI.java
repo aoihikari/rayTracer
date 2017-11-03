@@ -70,13 +70,15 @@ public class SceneI extends Scene {
     	shapes.add(sphere3);
     	
     	triangle1.setColor(new Color(0, 0, 1));
-    	triangle1.setSpecular(new Vector3D(1, 1, 1));
+    	triangle1.setDiffuse((0 + 0 + 1) / 3);
+    	triangle1.setSpecular((1 + 1 + 1)/3);
     	triangle1.setPhong(32);
     	
     	shapes.add(triangle1);
     	
     	triangle2.setColor(new Color(1, 1, 0));
-    	triangle2.setSpecular(new Vector3D(1, 1, 1));
+    	triangle1.setDiffuse((1 + 1 + 0) / 3);
+    	triangle2.setSpecular((1 + 1 + 1)/3);
     	triangle2.setPhong(4);
     	
     	shapes.add(triangle2);

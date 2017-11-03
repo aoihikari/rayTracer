@@ -21,4 +21,9 @@ public abstract class Shape {
 	public double getReflective() {
 		return 0;
 	}
+
+	public int getPhong() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }

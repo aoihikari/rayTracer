@@ -21,9 +21,9 @@ public class SceneIII extends Scene {
     private Vector3D cameraLookFrom = new Vector3D(0, 0, -2);
     private Vector3D cameraLookUp = new Vector3D(0, 1, 0).negative();
     
-    private double fieldOfView = 30;
+    private double fieldOfView = 28;
     
-    private Vector3D directionToLight = new Vector3D(0, 5, -10);
+    private Vector3D directionToLight = new Vector3D(0, 2.5, -2.5);
     private Color lightColor = new Color(1, 1, 1);
     
     private Light light = new Light(directionToLight, lightColor);
@@ -53,12 +53,16 @@ public class SceneIII extends Scene {
     	shapes.add(sphere1);
     	
     	sphere2.setColor(new Color(1, 0, 0));
-    	sphere2.setReflective((1 + 0 + 0) / 3);
+    	sphere2.setDiffuse((1 + 0 + 0) / 3);
+    	sphere2.setSpecular((1 + 1 + 1) / 3);
+    	sphere2.setPhong(4);
     	
     	shapes.add(sphere2);
     	
-    	sphere3.setColor(new Color(1, 1, 1));
-    	sphere3.setReflective((1 + 1 + 1) / 3);
+    	sphere3.setColor(new Color(0, 1, 0));
+    	sphere3.setDiffuse((0 + 1 + 0) / 3);
+    	sphere3.setSpecular((.5 + 1 + .5) / 3);
+    	sphere3.setPhong(32);
     	
     	shapes.add(sphere3);
     	
@@ -78,12 +82,16 @@ public class SceneIII extends Scene {
     	shapes.add(sphere6);
     	
     	sphere7.setColor(new Color(0, 0, 1));
-    	sphere7.setReflective((0 + 0 + 1) / 3);
+    	sphere7.setDiffuse((0 + 0 + 1) / 3);
+    	sphere7.setSpecular((.5 + 1 + .5) / 3);
+    	sphere7.setPhong(32);
     	
     	shapes.add(sphere7);
     	
     	sphere8.setColor(new Color(1, 1, 0));
-    	sphere8.setReflective((1 + 1 + 0) / 3);
+    	sphere8.setDiffuse((1 + 1 + 0) / 3);
+    	sphere8.setSpecular((.5 + 1 + .5) / 3);
+    	sphere8.setPhong(32);
     	
     	shapes.add(sphere8);
     	
@@ -103,7 +111,9 @@ public class SceneIII extends Scene {
     	shapes.add(sphere11);
     	
     	sphere12.setColor(new Color(1, 0, 1));
-    	sphere12.setReflective((1 + 0 + 1) / 3);
+    	sphere12.setDiffuse((1 + 0 + 1) / 3);
+    	sphere12.setSpecular((.5 + 1 + .5) / 3);
+    	sphere12.setPhong(32);
     	
     	shapes.add(sphere12);
     	
@@ -113,7 +123,10 @@ public class SceneIII extends Scene {
     	shapes.add(sphere13);
     	
     	sphere14.setColor(new Color(0, 1, 1));
-    	sphere14.setReflective((0 + 1 + 1) / 3);
+    	sphere14.setDiffuse((0 + 1 + 1) / 3);
+    	sphere14.setSpecular((1 + 1 + 1) / 3);
+    	sphere14.setPhong(4);
+    	
     	
     	shapes.add(sphere14);    	
     }

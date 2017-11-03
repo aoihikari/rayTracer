@@ -10,8 +10,10 @@ public class Triangle extends Shape {
     private Vector3D vertex2;
     private Vector3D vertex3;
     private Color color;
-    private Vector3D specular;
-    private int phong;
+    private double diffuse;
+    private double specular;
+    private double reflective;
+    private int phong = 1;
 
     private double distance;
     private Vector3D normal;
@@ -65,41 +67,39 @@ public class Triangle extends Shape {
     @Override
     public double findIntersection(Ray ray) {
         double a = ray.getDirection().dot(normal);
-        if(a != 0) {
-            double b = normal.dot(ray.getOrigin().add(normal.multiply(distance).negative()));
-            double distanceToTriangle =  -1 * b / a;
+        double b = normal.dot(ray.getOrigin().add(normal.multiply(distance).negative()));
+        
+        double distanceToTriangle =  -1 * b / a;
 
-            double qX = ray.getDirection().multiply(distanceToTriangle).getX() + ray.getOrigin().getX();
-            double qY = ray.getDirection().multiply(distanceToTriangle).getY() + ray.getOrigin().getY();
-            double qZ = ray.getDirection().multiply(distanceToTriangle).getZ() + ray.getOrigin().getZ();
+        double x = ray.getDirection().multiply(distanceToTriangle).getX() + ray.getOrigin().getX();
+        double y = ray.getDirection().multiply(distanceToTriangle).getY() + ray.getOrigin().getY();
+        double z = ray.getDirection().multiply(distanceToTriangle).getZ() + ray.getOrigin().getZ();
 
-            Vector3D Q = new Vector3D(qX, qY, qZ);
+        Vector3D newVector = new Vector3D(x, y, z);
+        Vector3D oneMinusTwo = vertex1.add(vertex2.negative());
+        Vector3D newMinusOne = newVector.add(vertex1.negative());
+        Vector3D twoMinusThree = vertex2.add(vertex3.negative());
+        Vector3D newMinusTwo = newVector.add(vertex2.negative());
+        Vector3D threeMinusOne = vertex3.add(vertex1.negative());
+        Vector3D newMinusThree = newVector.add(vertex3.negative());
 
-            Vector3D AB = vertex1.add(vertex2.negative());
-            Vector3D QA = Q.add(vertex1.negative());
-
-            Vector3D BC = vertex2.add(vertex3.negative());
-            Vector3D QB = Q.add(vertex2.negative());
-
-            Vector3D CA = vertex3.add(vertex1.negative());
-            Vector3D QC = Q.add(vertex3.negative());
-
-            double test1 = AB.cross(QB).dot(normal);
-            double test2 = BC.cross(QC).dot(normal);
-            double test3 = CA.cross(QA).dot(normal);
-
-            if(test1 >= 0 && test2 >= 0 && test3 >= 0) {
+        double check1 = oneMinusTwo.cross(newMinusTwo).dot(normal);
+        double check2 = twoMinusThree.cross(newMinusThree).dot(normal);
+        double check3 = threeMinusOne.cross(newMinusOne).dot(normal);
+        
+        if(a != 0) {     
+            if(check1 >= 0 && check2 >= 0 && check3 >= 0) {
                 return distanceToTriangle;
             }
         }
         return -1;
     }
 
-	public Vector3D getSpecular() {
+	public double getSpecular() {
 		return specular;
 	}
 
-	public void setSpecular(Vector3D specular) {
+	public void setSpecular(double specular) {
 		this.specular = specular;
 	}
 
@@ -109,5 +109,21 @@ public class Triangle extends Shape {
 
 	public void setPhong(int phong) {
 		this.phong = phong;
+	}
+
+	public double getDiffuse() {
+		return diffuse;
+	}
+
+	public void setDiffuse(double diffuse) {
+		this.diffuse = diffuse;
+	}
+
+	public double getReflective() {
+		return reflective;
+	}
+
+	public void setReflective(double reflective) {
+		this.reflective = reflective;
 	}
 }

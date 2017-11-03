@@ -12,7 +12,7 @@ public class Sphere extends Shape {
     private double diffuse;
     private double specular;
     private double reflective;
-    private int phong;
+    private int phong = 1;
 
     public Sphere(Vector3D center, double radius) {
         this.center = center;

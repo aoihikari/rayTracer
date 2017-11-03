@@ -129,8 +129,6 @@ public class RayTracer {
 
         Color finalColor = shapeColor.multiply(scene.getAmbient());
 
-
-        // Diffuse & Specular
         Vector3D lightDirection = scene.getLight().getPosition().add(intersectionPosition.negative()).normalize();
         double cosine = shapeNormal.dot(lightDirection);
         if(cosine > 0) {
@@ -157,30 +155,22 @@ public class RayTracer {
             if(!inShadow) {
                 finalColor = finalColor.add(shapeColor.multiply(scene.getLight().getColor()).scale(cosine));
                 if(shape.getReflective() > 0 && shape.getReflective() <= 1) {
-                    double dot1 = shapeNormal.dot(intersectionDirection.negative());
-                    Vector3D scalar1 = shapeNormal.multiply(dot1);
-                    Vector3D add1 = scalar1.add(intersectionDirection);
-                    Vector3D scalar2 = add1.multiply(2);
-                    Vector3D add2 = intersectionDirection.negative().add(scalar2);
-                    Vector3D reflection = add2.normalize();
+                    Vector3D s1 = shapeNormal.multiply(shapeNormal.dot(intersectionDirection.negative())).add(intersectionDirection);
+                    Vector3D s2 = s1.multiply(2);
+                    Vector3D reflection = intersectionDirection.negative().add(s2).normalize();
 
                     double specular = reflection.dot(lightDirection);
                     if(specular > 0) {
-                        specular = Math.pow(specular, 20);
-                        finalColor = finalColor.add(scene.getLight().getColor().scale(specular * shape.getReflective()));
+                        finalColor = finalColor.add(scene.getLight().getColor().scale(Math.pow(specular, 20)));
                     }
                 }
             }
         }
 
-        // Reflection
         if(shape.getReflective() > 0 && shape.getReflective() <= 1 && depth < 20) {
-            double dot1 = shapeNormal.dot(intersectionDirection.negative());
-            Vector3D scalar1 = shapeNormal.multiply(dot1);
-            Vector3D add1 = scalar1.add(intersectionDirection);
-            Vector3D scalar2 = add1.multiply(2);
-            Vector3D add2 = intersectionDirection.negative().add(scalar2);
-            Vector3D reflection = add2.normalize();
+            Vector3D s1 = shapeNormal.multiply(shapeNormal.dot(intersectionDirection.negative())).add(intersectionDirection);
+            Vector3D s2 = s1.multiply(2);
+            Vector3D reflection = intersectionDirection.negative().add(s2).normalize();
 
             Ray reflectionRay = new Ray(intersectionPosition, reflection);
             ArrayList<Double> reflectionIntersections = new ArrayList<>();
