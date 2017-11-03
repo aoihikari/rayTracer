@@ -1,9 +1,9 @@
-import tracer.Tracer;
+import miscellaneous.RayTracer;
 
 public class Main {	
 	
     public static void main(String[] args) {
-    	Tracer rayTracer = new Tracer();
+    	RayTracer rayTracer = new RayTracer();
     	rayTracer.run();    	
     }    
 }
