@@ -6,40 +6,38 @@ import util.Vector3D;
 
 public class Triangle extends Shape {
 
-    private Vector3D pointA;
-    private Vector3D pointB;
-    private Vector3D pointC;
+    private Vector3D vertex1;
+    private Vector3D vertex2;
+    private Vector3D vertex3;
+    private Color color;
+    private Vector3D specular;
+    private int phong;
 
     private double distance;
     private Vector3D normal;
-    private Color color;
 
-    public Triangle(Vector3D a, Vector3D b, Vector3D c, Color color) {
-        pointA = a;
-        pointB = b;
-        pointC = c;
-        this.color = color;
-        init();
+
+    public Triangle(Vector3D vertex1, Vector3D vertex2, Vector3D vertex3) {
+        this.vertex1 = vertex1;
+        this.vertex2 = vertex2;
+        this.vertex3 = vertex3;
+        
+        Vector3D threeMinusOne = vertex3.add(vertex1.negative());
+        Vector3D TwoMinusOne = vertex2.add(vertex1.negative());
+        normal = threeMinusOne.cross(TwoMinusOne).normalize();
+        distance = normal.dot(vertex1);
     }
 
-    private void init() {
-        Vector3D CA = pointC.add(pointA.negative());
-        Vector3D BA = pointB.add(pointA.negative());
-        normal = CA.cross(BA).normalize();
-        distance = normal.dot(pointA);
-
+    public Vector3D getVertex1() {
+        return vertex1;
     }
 
-    public Vector3D getPointA() {
-        return pointA;
+    public Vector3D getVertex2() {
+        return vertex2;
     }
 
-    public Vector3D getPointB() {
-        return pointB;
-    }
-
-    public Vector3D getPointC() {
-        return pointC;
+    public Vector3D getVertex3() {
+        return vertex3;
     }
 
     public double getDistance() {
@@ -53,6 +51,10 @@ public class Triangle extends Shape {
     @Override
     public Color getColor() {
         return color;
+    }
+    
+    public void setColor(Color color) {
+        this.color = color;
     }
 
     @Override
@@ -73,14 +75,14 @@ public class Triangle extends Shape {
 
             Vector3D Q = new Vector3D(qX, qY, qZ);
 
-            Vector3D AB = pointA.add(pointB.negative());
-            Vector3D QA = Q.add(pointA.negative());
+            Vector3D AB = vertex1.add(vertex2.negative());
+            Vector3D QA = Q.add(vertex1.negative());
 
-            Vector3D BC = pointB.add(pointC.negative());
-            Vector3D QB = Q.add(pointB.negative());
+            Vector3D BC = vertex2.add(vertex3.negative());
+            Vector3D QB = Q.add(vertex2.negative());
 
-            Vector3D CA = pointC.add(pointA.negative());
-            Vector3D QC = Q.add(pointC.negative());
+            Vector3D CA = vertex3.add(vertex1.negative());
+            Vector3D QC = Q.add(vertex3.negative());
 
             double test1 = AB.cross(QB).dot(normal);
             double test2 = BC.cross(QC).dot(normal);
@@ -92,4 +94,20 @@ public class Triangle extends Shape {
         }
         return -1;
     }
+
+	public Vector3D getSpecular() {
+		return specular;
+	}
+
+	public void setSpecular(Vector3D specular) {
+		this.specular = specular;
+	}
+
+	public int getPhong() {
+		return phong;
+	}
+
+	public void setPhong(int phong) {
+		this.phong = phong;
+	}
 }

@@ -1,6 +1,6 @@
 package util;
 
-public class Light extends LightSource {
+public class Light {
 
     private Vector3D position;
     private Color color;
@@ -15,12 +15,10 @@ public class Light extends LightSource {
         this.color = color;
     }
 
-    @Override
     public Vector3D getPosition() {
         return position;
     }
 
-    @Override
     public Color getColor() {
         return color;
     }

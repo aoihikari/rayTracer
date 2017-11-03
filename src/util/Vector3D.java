@@ -7,9 +7,7 @@ public class Vector3D {
     private double z;
 
     public Vector3D() {
-        x = 0;
-        y = 0;
-        z = 0;
+    	
     }
 
     public Vector3D(double x, double y, double z) {
@@ -59,21 +57,7 @@ public class Vector3D {
         return new Vector3D(x * s, y * s, z * s);
     }
 
-    public static Vector3D Origin() {
-        return new Vector3D(0, 0, 0);
-    }
-
-    public static Vector3D X() {
-        return new Vector3D(1, 0, 0);
-    }
-
     public static Vector3D Y() {
         return new Vector3D(0, 1, 0);
     }
-
-    public static Vector3D Z() {
-        return new Vector3D(0, 0, 1);
-    }
-
-
 }

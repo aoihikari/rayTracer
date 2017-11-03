@@ -1,7 +1,6 @@
 package tracer.shape;
 
 import tracer.Ray;
-import tracer.scene.material.Material;
 import util.Color;
 import util.Vector3D;
 
@@ -9,18 +8,16 @@ public class Sphere extends Shape {
 
     private Vector3D center;
     private double radius;
-    private Material material;
+    private Color color;
+    private double diffuse;
+    private double specular;
+    private double reflective;
+    private int phong;
 
-    public Sphere() {
-        center = new Vector3D(0, 0, 0);
-        radius = 1;
-        material = new Material();
-    }
-
-    public Sphere(Vector3D center, double radius, Material material) {
+    public Sphere(Vector3D center, double radius) {
         this.center = center;
         this.radius = radius;
-        this.material = material;
+
     }
 
     public Vector3D getCenter() {
@@ -33,12 +30,7 @@ public class Sphere extends Shape {
 
     @Override
     public Color getColor() {
-        return material.getColor();
-    }
-
-    @Override
-    public Material getMaterial() {
-        return material;
+        return color;
     }
 
     @Override
@@ -67,13 +59,50 @@ public class Sphere extends Shape {
         double discriminant = Math.pow(b, 2) - (4 * a * c);
 
         if(discriminant > 0) {
-            double firstRoot = ((-1 * b - Math.sqrt(discriminant)) / 2) - EPSILON;
+            double firstRoot = ((-1 * b - Math.sqrt(discriminant)) / 2) - .0000001;
             if(firstRoot > 0) {
                 return firstRoot;
             } else {
-                return ((-1 * b + Math.sqrt(discriminant)) / 2) - EPSILON;
+                return ((-1 * b + Math.sqrt(discriminant)) / 2) - .0000001;
             }
         }
         return -1;
     }
+
+	public void setColor(Color color) {
+		this.color = color;
+	}
+
+	public double getDiffuse() {
+		return diffuse;
+	}
+
+	public void setDiffuse(double diffuse) {
+		this.diffuse = diffuse;
+	}
+
+	public double getSpecular() {
+		return specular;
+	}
+
+	public void setSpecular(double specular) {
+		this.specular = specular;
+	}
+
+	@Override
+	public double getReflective() {
+		return reflective;
+	}
+
+	public void setReflective(double reflective) {
+		this.reflective = reflective;
+	}
+
+	public int getPhong() {
+		return phong;
+	}
+
+	public void setPhong(int phong) {
+		this.phong = phong;
+	}
 }
